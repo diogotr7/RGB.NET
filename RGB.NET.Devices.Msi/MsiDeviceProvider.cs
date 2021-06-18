@@ -90,6 +90,14 @@ namespace RGB.NET.Devices.Msi
                     //Hex3l: The led name is the name of the mouse (e.g. msi CLUTCH GM11) we could provide it in device info.
                     yield return new MsiMouseRGBDevice(new MsiRGBDeviceInfo(RGBDeviceType.Mouse, deviceType, "MSI", "Mouse"), ledCount, GetUpdateTrigger());
                 }
+                else if (deviceType.Equals("MSI_KEYBOARD"))
+                {
+                    yield return new MsiKeyboardRGBDevice(new MsiRGBDeviceInfo(RGBDeviceType.Keyboard, deviceType, "MSI", "Keyboard"), ledCount, GetUpdateTrigger());
+                }
+                else
+                {
+                    Throw(new Exception($"Found unknown device type: {deviceType}"), false);
+                }
             }
         }
 
