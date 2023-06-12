@@ -64,6 +64,12 @@ public sealed class HIDLoader<TLed, TData> : IEnumerable<HIDDeviceDefinition<TLe
     public void Add(int productId, RGBDeviceType deviceType, string name, LedMapping<TLed> ledMapping, TData customData)
         => _deviceDefinitions.Add(productId, new HIDDeviceDefinition<TLed, TData>(productId, deviceType, name, ledMapping, customData));
 
+    public HIDDeviceDefinition<TLed, TData> this[int led]
+    {
+        get => _deviceDefinitions[led];
+        set => _deviceDefinitions[led] = value;
+    }
+
     /// <summary>
     /// Gets a enumerable containing all devices from the definition-list that are connected and match the <see cref="LoadFilter"/>.
     /// </summary>
